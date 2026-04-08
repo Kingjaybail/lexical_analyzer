@@ -7,6 +7,7 @@ TOKEN_PATTERNS = [
     ("FLOAT",       r'\d+\.\d+'),
     ("INTEGER",     r'\d+'),
     ("STRING",      r'"[^"]*"'),
+    ("CHAR",        r"'[^'\\]'|'\\.'"),
     ("TYPE",        r'\b(byte|short|int|long|float|boolean|char|String)\b'),
     ("KEYWORD",     r'\b(if|else|while|for|return|void|public|static|double|main)\b'),
     ("IDENTIFIER",  r'[A-Za-z_]\w*'),
@@ -63,7 +64,7 @@ def main_printer(filepath):
             print(f"{value:<20} intNum")
         elif kind == "FLOAT":
             print(f"{value:<20} doubleNum")
-        elif kind == "STRING":
+        elif kind == "STRING" or kind == "CHAR":
             print(f"{value:<20} literal")
         else:
             print(f"{value:<20} {kind}")
@@ -84,7 +85,7 @@ def other_printer(filepath):
             print(f"intNum", end=" ")
         elif kind == "FLOAT":
             print(f"doubleNum", end=" ")
-        elif kind == "STRING":
+        elif kind == "STRING" or kind == "CHAR":
             print(f"literal", end=" ")
         else:
             print(f"{kind}", end=" ")
@@ -94,7 +95,8 @@ def other_printer(filepath):
 while True:
     run = input("Please enter a file path: ")
     try:
-        other_printer(run)
+        main_printer(run)
+        # other_printer(run)
         break
     except (FileNotFoundError, OSError):
         print("Enter proper file path")
