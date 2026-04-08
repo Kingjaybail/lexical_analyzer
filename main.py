@@ -11,7 +11,7 @@ TOKEN_PATTERNS = [
     ("TYPE",        r'\b(byte|short|int|long|float|boolean|char|String)\b'),
     ("KEYWORD",     r'\b(if|else|while|for|return|void|public|static|double|main)\b'),
     ("IDENTIFIER",  r'[A-Za-z_]\w*'),
-    ("OPERATOR",    r'==|!=|<=|>=|&&|\|\||[+\-*/=<>!]'),
+    ("OPERATOR",    r'==|!=|<=|>=|&&|\|\||[+\-*/=<>!]|%'),
     ("DELIMITER",   r'[;,(){}[\].]'),
     ("UNKNOWN",     r'\S+'),
 ]
